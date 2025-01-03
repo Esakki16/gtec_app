@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -10,6 +12,8 @@ class ImagePickerScreen extends StatefulWidget {
 
 class _ImagePickerScreenState extends State<ImagePickerScreen> {
   final ImagePicker picker = ImagePicker();
+  XFile? pickedImageFromCamera;
+  XFile? pickedImageFromGallery;
 
   @override
   Widget build(BuildContext context) {
@@ -24,32 +28,38 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
           children: [
             GestureDetector(
               onTap: () async {
-                var pickedImage =
+                pickedImageFromCamera =
                     await picker.pickImage(source: ImageSource.camera);
-                print(pickedImage!.path);
+                // print(pickedImage!.path);
+                setState(() {});
               },
               child: Container(
                 height: 150,
                 width: 150,
                 color: Colors.grey,
-                child: Icon(Icons.camera),
+                child: pickedImageFromCamera != null
+                    ? Image.file(File(pickedImageFromCamera!.path))
+                    : const Icon(Icons.camera),
               ),
             ),
             GestureDetector(
               onTap: () async {
-                var pickedImage1 =
+                pickedImageFromGallery =
                     await picker.pickImage(source: ImageSource.gallery);
-                if (pickedImage1 != null) {
-                  print(pickedImage1.path);
+                if (pickedImageFromGallery != null) {
+                  print(pickedImageFromGallery!.path);
                 } else {
                   print("You not select any photo from gallery");
                 }
+                setState(() {});
               },
               child: Container(
                   height: 150,
                   width: 150,
                   color: Colors.grey,
-                  child: Icon(Icons.photo)),
+                  child: pickedImageFromGallery != null
+                      ? Image.file(File(pickedImageFromGallery!.path))
+                      : const Icon(Icons.photo)),
             )
           ],
         ),
