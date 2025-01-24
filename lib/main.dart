@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gtec_class_app/bottom_navigation_bar_screen.dart';
 import 'package:gtec_class_app/image_picker_screen.dart';
 
 void main() {
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo', theme: ThemeData(), home: ImagePickerScreen());
+        title: 'Flutter Demo',
+        theme: ThemeData(),
+        home: BottomNavigationBarScreen());
   }
 }
 
