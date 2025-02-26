@@ -2,10 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gtec_class_app/bottom_navigation_bar_screen.dart';
 import 'package:gtec_class_app/image_picker_screen.dart';
+import 'package:gtec_class_app/spinner_wheel.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -16,9 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(),
-        home: BottomNavigationBarScreen());
+        title: 'Flutter Demo', theme: ThemeData(), home: ExamplePage());
   }
 }
 
